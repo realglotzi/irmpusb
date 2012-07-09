@@ -31,8 +31,8 @@ at least be connected to INT0 as well.
 	#error F_CPU unkown
 #endif
 
-//enter here the Irmp build date:
-const char IrmpVersion[] = "20.09.2011";
+//enter here the Irmp build date or version:
+const char IrmpVersion[] = "2.2.3";
 
 #define led1On()    PORTC &= ~(1 << PC1)
 #define led1Off()   PORTC |= (1 << PC1)

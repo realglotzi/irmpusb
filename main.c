@@ -34,10 +34,10 @@ at least be connected to INT0 as well.
 //enter here the Irmp build date:
 const char IrmpVersion[] = "20.09.2011";
 
-#define ledRedOn()    PORTC &= ~(1 << PC1)
-#define ledRedOff()   PORTC |= (1 << PC1)
-#define ledGreenOn()  PORTC &= ~(1 << PC0)
-#define ledGreenOff() PORTC |= (1 << PC0)
+#define led1On()    PORTC &= ~(1 << PC1)
+#define led1Off()   PORTC |= (1 << PC1)
+#define led2On()  	PORTC &= ~(1 << PC0)
+#define led2Off() 	PORTC |= (1 << PC0)
  
 
 /* ------------------------------------------------------------------------- */
@@ -415,8 +415,8 @@ int main(void)
 	irmp_init();                                                            							// initialize irmp code
 	timer_init();                                                           							// initialize timer
 
-	ledRedOff();
-	ledGreenOn();
+	led1Off();
+	led2On();
 
     usbDeviceDisconnect();  																			/* enforce re-enumeration, do this while interrupts are disabled! */
     i = 0;
@@ -486,6 +486,10 @@ int main(void)
 			#else
 				SendINTData();
 			#endif
+			
+			led1On();																					// toggle led
+			_delay_us(500);
+			led1Off();
 	    }
         usbPoll();																						// do a USB poll
     }

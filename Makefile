@@ -40,26 +40,8 @@ all:	main.hex
 flash:	all
 	$(AVRDUDE) -U flash:w:main.hex:i
 
-
-# Fuse high byte:
-# 0xc6 = 1 1 0 1   1 1 0 1
-#        ^ ^ ^ ^   ^ \-+-/ 
-#        | | | |   |   +------ BODLEVEL 2..0 (brownout trigger level -> 2.7V)
-#        | | | |   +---------- EESAVE (preserve EEPROM on Chip Erase -> not preserved)
-#        | | | +-------------- WDTON (watchdog timer always on -> disable)
-#        | | +---------------- SPIEN (enable serial programming -> enabled)
-#        | +------------------ DWEN (debug wire enable)
-#        +-------------------- RSTDISBL (disable external reset -> enabled)
-#
-# Fuse low byte:
-# 0x9f = 1 1 1 0   0 0 0 1
-#        ^ ^ \+/   \--+--/
-#        | |  |       +------- CKSEL 3..0 (clock selection -> HF PLL)
-#        | |  +--------------- SUT 1..0 (BOD enabled, fast rising power)
-#        | +------------------ CKOUT (clock output on CKOUT pin -> disabled)
-#        +-------------------- CKDIV8 (divide clock by 8 -> don't divide)
 fuse:
-ifeq ($(DEVICE),attiny8)
+ifeq ($(DEVICE),atmega8)
 	$(AVRDUDE) -U hfuse:w:0xc6:m -U lfuse:w:0x9f:m		
 else
 	# Safety mode, dont kill your AVR :)

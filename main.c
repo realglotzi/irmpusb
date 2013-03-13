@@ -22,7 +22,7 @@ at least be connected to INT0 as well.
 
 #include "configUSBIRRemoteReceiver.h"	/* main config file */
 
-#include "Irmp/irmp.h"			/* ir remote handling */
+#include "irmp/irmp.h"			/* ir remote handling */
 
 #include <avr/pgmspace.h>   /* required by usbdrv.h */
 #include "usbdrv.h"			/* v-usb driver */
@@ -44,7 +44,7 @@ const char IrmpVersion[] = "2.2.3";
 /* ----------------------------- USB interface ----------------------------- */
 /* ------------------------------------------------------------------------- */
 
-PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = {
+const PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = {
     0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
     0x0b, 0x01, 0x00, 0x00, 0xff,  // USAGE (Vendor Defined Page 1:Vendor Usage 1)
     0xa1, 0x01,                    // COLLECTION (Application)

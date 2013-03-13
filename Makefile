@@ -9,17 +9,17 @@
 DEVICE=atmega8
 F_CPU=12000000
 
-AVRDUDE = avrdude -c stk500v2 -p $(DEVICE) -P /dev/ttyUSB0
+AVRDUDE = avrdude -c stk500v2 -p $(DEVICE) -P /dev/ttyUSB1
 # Choose your favorite programmer and interface.
 
-COMPILE = avr-gcc -Wall -Os -Iusbdrv -IIrmp -I. -mmcu=$(DEVICE) -DF_CPU=$(F_CPU) -DDEBUG_LEVEL=0
+COMPILE = avr-gcc -Wall -Os -Iusbdrv -Iirmp -I. -mmcu=$(DEVICE) -DF_CPU=$(F_CPU) -DDEBUG_LEVEL=0
 
 # NEVER compile the final product with debugging! Any debug output will
 # distort timing so that the specs can't be met.
 
-#OBJECTS = usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o Irmp/irmp.c libs-device/osccal.o main.o
-#OBJECTS = usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o Irmp/irmp.c main.o
-OBJECTS = usbdrv/usbdrv.o usbdrv/usbdrvasm.o Irmp/irmp.c main.o
+#OBJECTS = usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o irmp/irmp.c libs-device/osccal.o main.o
+#OBJECTS = usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o irmp/irmp.c main.o
+OBJECTS = usbdrv/usbdrv.o usbdrv/usbdrvasm.o irmp/irmp.c main.o
 
 # symbolic targets:
 all:	main.hex

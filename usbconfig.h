@@ -224,10 +224,10 @@ section at the end of this file).
  * shared VID/PID pairs. Be sure to read USB-IDs-for-free.txt for rules!
  * *** IMPORTANT NOTE ***
  * This template uses obdev's shared VID/PID pair for Vendor Class devices
- * with libusb: 0x16c0/0x5dc.  Use this VID/PID pair ONLY if you understand
+ * with libusb: 0x16c0/0x27d9.  Use this VID/PID pair ONLY if you understand
  * the implications!
  */
-#define  USB_CFG_DEVICE_ID       0xdf, 0x05 /* obdev's shared PID for HIDs */
+#define  USB_CFG_DEVICE_ID       0xd9, 0x27 /* obdev's shared PID for HIDs */
 /* This is the ID of the product, low byte first. It is interpreted in the
  * scope of the vendor ID. If you have registered your own VID with usb.org
  * or if you have licensed a PID from somebody else, define it here. Otherwise
@@ -235,7 +235,7 @@ section at the end of this file).
  * USB-IDs-for-free.txt for details!
  * *** IMPORTANT NOTE ***
  * This template uses obdev's shared VID/PID pair for Vendor Class devices
- * with libusb: 0x16c0/0x5dc.  Use this VID/PID pair ONLY if you understand
+ * with libusb: 0x16c0/0x27d9.  Use this VID/PID pair ONLY if you understand
  * the implications!
  */
 #define USB_CFG_DEVICE_VERSION  0x08, 0x01

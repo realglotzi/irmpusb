@@ -181,6 +181,8 @@ init_io(void)
     PORTD = 0xFF;   													/* activate all pull-ups */
     DDRD = 0;    														/* all pins input */
 
+    PORTD &=~(1<<PD2);													/* deactivate pull-up on int0 line */
+
 	/* all inputs except PC0, PC1 */
 	DDRC = 0x03;
 	PORTC = 0xfe;
